@@ -15,4 +15,4 @@
     </div>
     <!-- ./wrapper -->
 
-    @include('layouts.scripts')
+    @include('admin.layouts.scripts')
