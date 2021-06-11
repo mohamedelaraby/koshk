@@ -4,7 +4,8 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Settings;
 use Illuminate\Support\Facades\Request;
- /**
+
+/**
  *  Handle admin url prefix
  *  @var string |null $url
  *  @return URL
@@ -15,6 +16,8 @@ if (!function_exists('admin_url')) {
         return url('admin/'  . $url);
     }
 }
+
+
 
 /**
  *  Get UploadController location

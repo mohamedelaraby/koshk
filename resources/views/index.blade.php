@@ -1,5 +1,6 @@
 @include('admin.layouts.header')
 
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
@@ -10,6 +11,8 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            @include('admin.layouts.message')
+
         @yield('content')
         </div>
        @include('admin.layouts.footer')
