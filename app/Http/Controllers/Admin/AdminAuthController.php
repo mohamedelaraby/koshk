@@ -37,6 +37,13 @@ class AdminAuthController extends Controller
         adminAuthGuard()->logout();
         return redirect(admin_url('login'));
     }
+    
+    /**
+     *  Display forgot password view
+     */
+    public function forgotpasword(){
+       return view('admin.forgotpassword')
+    }
 
 
     /*
