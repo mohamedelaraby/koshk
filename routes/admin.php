@@ -17,7 +17,9 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::post('login','AdminAuthController@doLogin');
     Route::get('forgotpassword','AdminAuthController@forgotPassword')->name('admin.forgotpassword-get');
     Route::post('forgotpassword','AdminAuthController@forgotPasswordPost')->name('admin.forgotpassword-post');
-    Route::get('resetpassword/{token}','AdminAuthController@resetPassword')->name('admin.resetpassoword');
+    Route::get('recoverpassword/{token}','AdminAuthController@recoverPassword')->name('admin.resetpassoword');
+    Route::get('recoverpassword','AdminAuthController@recoverPassoword')->name('admin.forgotpassword-post');
+    Route::post('recoverpassword','AdminAuthController@forgotPasswordPost')->name('admin.forgotpassword-post');
 
 
     Route::group(['middleware'=>'admin:admin'],function(){

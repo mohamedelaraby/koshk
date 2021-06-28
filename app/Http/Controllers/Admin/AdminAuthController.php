@@ -4,14 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AdminResetPassword;
-use App\Models\Admin;
+use App\Repositories\AdminsRepository;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class AdminAuthController extends Controller
 {
+
+
+       /** @param $serviceRepository */
+       private $adminsRepository;
+
+
+       public function __construct(AdminsRepository $adminsRepository)
+       {
+           $this->adminsRepository = $adminsRepository;
+       }
+
     /**
      *  Display login view
      */
@@ -55,17 +65,19 @@ class AdminAuthController extends Controller
      */
     public function forgotPasswordPost(){
 
-       $admin = Admin::where('email',request('email'))->first();
+        // Find sdmin by email
+       $admin = $this->adminsRepository->findByEmail(request('email'));
 
        // check for admin exists
+
         if(!empty($admin)){
-            $token =
 
 
-            // get the data
-            $data =
-
-            Mail::to($admin->email)->send(new AdminResetPassword(['data'=> $admin,'token'=>$data]));
+            // Send mail
+            Mail::to($admin->email)->send(new AdminResetPassword([
+                'data'=> $admin,
+                'token'=>$this->ResetAdminData($admin,$this->ResetAdminToken($admin))
+            ]));
 
             // session message
             session()->flash('success',trans('admin.link_reset_sent'));
@@ -73,7 +85,19 @@ class AdminAuthController extends Controller
         }
 
             return back();
-        }
+    }
+
+    public function recoverPassword($token){
+
+        return view('admin.recoverpassword');
+        // Check for the token validation
+        $checkToken = $this->adminsRepository->ResetAdminTokenValidation($token);
+
+        // Check for the token
+        $this->ResetAdminTokenCheck($checkToken);
+    }
+
+
 
 
     /*
@@ -81,6 +105,18 @@ class AdminAuthController extends Controller
     | Custom methods
     |--------------------------------------------------------------------------
     |*/
+
+    /**
+     * Check for the token
+     */
+    private function ResetAdminTokenCheck($checkToken){
+        if(!empty($checkToken)){
+            return view('admin.recoverpassword',['data'=>$checkToken]);
+        } else {
+            return redirect(admin_url('forgotpassword'));
+        }
+    }
+
 
     /**
      * Check for  remeberme token
@@ -99,16 +135,6 @@ class AdminAuthController extends Controller
         ];
     }
 
-
-
-
-    /**
-     *  Find Admin email
-     */
-    private function ResetAdminEmail($email){
-        return app('auth.password.broker')->createToken($admin);
-    }
-
     /**
      *  Get token
      */
@@ -120,10 +146,6 @@ class AdminAuthController extends Controller
      *  Get Admin data
      */
     private function ResetAdminData($admin,$token){
-        return DB::table('password_resets')->insert([
-            'email' =>$admin->email,
-            'token' =>$token,
-            'created_at' =>Carbon::now(),
-        ]);
+        return $this->adminsRepository->ResetAdminDataGet($admin,$token);
     }
 }
