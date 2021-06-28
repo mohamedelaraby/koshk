@@ -16,7 +16,7 @@ return [
       */
      'admin_panel' => 'لوحة التجكم',
      'admin_account' => ' حساب المشرفين',
-     'admin_dashboard' => 'الرئيسية',
+     'dashboard' => 'الرئيسية',
      'create_admin' => 'إضافة مشرف جديد ',
      'copyrights' => 'جميع حقوق الطبع محفوظة',
 

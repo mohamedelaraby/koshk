@@ -17,7 +17,7 @@ return [
       */
      'admin_panel' => 'Admin Panel',
      'admin_account' => 'Admin Account',
-     'admin_dashboard' => 'Dashboard',
+     'dashboard' => 'Dashboard',
      'create_admin' => 'Add New Admin',
 
      // admin Datatable

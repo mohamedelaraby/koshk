@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('title')
-{{ trans('admin.dashboard') }}
+{{ trans('admin.dashboard')}}
 @endsection
 
 @section('content')
