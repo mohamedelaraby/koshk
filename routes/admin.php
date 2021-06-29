@@ -26,5 +26,6 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
         Route::any('logout','AdminAuthController@logout')->name('admin.logout');
 
     Route::get('home','AdminController@dashboard')->name('admin.dashboard');
+    Route::get('admins','AdminController@index')->name('admin.admins.dashboard');
 });
 });

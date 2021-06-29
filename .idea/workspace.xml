@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf6a6d10-e36c-4b99-826a-19d7b92ba329" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminAuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/AdminsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/AdminsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/message.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/recoverpassword.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/recoverpassword.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/koshk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/koshk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Helpers/General.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Helpers/General.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,6 +127,22 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/league/fractal" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-buttons" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-editor" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-fractal" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-html" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ubRxdwBPuH6vLkbB0oZfahQhqB" />
@@ -135,7 +156,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -155,7 +176,7 @@
       <workItem from="1624932554277" duration="147000" />
       <workItem from="1624932726148" duration="76000" />
       <workItem from="1624932833685" duration="196000" />
-      <workItem from="1624933126465" duration="3272000" />
+      <workItem from="1624933126465" duration="7183000" />
     </task>
     <servers />
   </component>
@@ -163,14 +184,19 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="149" y="0" key="SettingsEditor" timestamp="1624933236170">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="488" y="115" key="#com.intellij.ide.util.MemberChooser" timestamp="1624940166200">
+      <screen x="0" y="30" width="1366" height="738" />
+    </state>
+    <state x="488" y="115" key="#com.intellij.ide.util.MemberChooser/0.30.1366.738@0.30.1366.738" timestamp="1624940166200" />
+    <state x="149" y="30" key="SettingsEditor" timestamp="1624939522201">
+      <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="149" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1624933236170" />
-    <state x="262" y="29" width="840" height="1034" key="search.everywhere.popup" timestamp="1624937554667">
+    <state x="149" y="30" key="SettingsEditor/0.30.1366.738@0.30.1366.738" timestamp="1624939522201" />
+    <state x="262" y="29" width="840" height="1034" key="search.everywhere.popup" timestamp="1624941735672">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="262" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1624933282194" />
-    <state x="262" y="29" width="840" height="1034" key="search.everywhere.popup/0.30.1366.738@0.30.1366.738" timestamp="1624937554667" />
+    <state x="262" y="29" width="840" height="1034" key="search.everywhere.popup/0.30.1366.738@0.30.1366.738" timestamp="1624941735672" />
   </component>
 </project>

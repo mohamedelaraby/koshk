@@ -102,9 +102,9 @@ if (!function_exists('active_menu')) {
    function active_menu($link){
        if(preg_match('/'.$link.'/i', Request::segment(2))){
            return ['menu-open','display:block'];
-       } else {
-           return ['',''];
        }
+
+       return ['',''];
 
    }
 }
@@ -116,11 +116,11 @@ if (!function_exists('active_menu')) {
  */
 if (!function_exists('arrow_icon')) {
    function arrow_icon(){
-    if(app()->getlocale() == 'ar'){
+    if(app()->getlocale() === 'ar'){
       return  'right fas fa-angle-left';
-    }else{
-        return "right fas fa-angle-right";
     }
+
+       return "right fas fa-angle-right";
 
    }
 }
@@ -132,11 +132,11 @@ if (!function_exists('arrow_icon')) {
  */
 if (!function_exists('nav_direction')) {
    function nav_direction(){
-    if(app()->getlocale() == 'ar'){
+    if(app()->getlocale() === 'ar'){
       return  'mr-auto';
-    }else{
-        return "ml-auto";
     }
+
+       return "ml-auto";
 
    }
 }
@@ -148,7 +148,7 @@ if (!function_exists('nav_direction')) {
 /**
  *  Handle admin Auth guard prefix
  *
- *  @return guard
+ *  @return
  */
 if (!function_exists('adminAuthGuard')) {
     function adminAuthGuard()
@@ -160,7 +160,7 @@ if (!function_exists('adminAuthGuard')) {
 /**
  *  Handle admin Datatable data
  *
- *  @return array | mix
+ *  @return
  */
 if (!function_exists('datatable_lang')) {
     function datatable_lang()
@@ -208,10 +208,10 @@ if(!function_exists('validate_image')){
         // If  no extension Then match image extension
         if($extension === null){
             return  'image|required|mimes:jpeg,png,jpg,gif,svg,bmp|max:2048';
-        } else {
-            // Use Image extension
-            return 'image|required|mimes:'.$extension;
         }
+
+// Use Image extension
+        return 'image|required|mimes:'.$extension;
     }
 }
 
@@ -221,4 +221,4 @@ if(!function_exists('validate_image')){
 
 
 
-?>
+
