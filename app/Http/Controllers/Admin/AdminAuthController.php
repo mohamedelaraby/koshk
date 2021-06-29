@@ -8,6 +8,7 @@ use App\Repositories\AdminsRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\ValidationException;
 
 class AdminAuthController extends Controller
 {
@@ -32,9 +33,10 @@ class AdminAuthController extends Controller
     /**
      * Handle login process
      *
-     * @return response
+     * @return
      */
-    public function doLogin(){
+    public function doLogin()
+    {
 
         // Check for login inputs
         if(adminAuthGuard()->attempt($this->loginInputs(),$this->rememberme())){
@@ -87,15 +89,50 @@ class AdminAuthController extends Controller
             return back();
     }
 
-    public function recoverPassword($token){
+    /**
+     *  Display forgot password view
+     */
+    public function recoverPasswordPost($token){
 
-        return view('admin.recoverpassword');
+        //validation for new password
+        $this->resetNewPasswordValidation();
+
+        // Check for the token validation
+        $checkToken = $this->adminsRepository->ResetAdminTokenValidation($token);
+
+        // Check for the token
+        if(!empty($checkToken)){
+            // Update admin password
+            // check for token admin email
+            //update admin password
+            $adminData = [
+                'email' => $checkToken->email,
+                'password' => bcrypt(request('password'))
+            ];
+            $this->adminsRepository->AdminPasswordUpdate($adminData,$checkToken->email);
+
+            // Delete previous reset password processes
+            $this->adminsRepository->AdminPasswordResetDelete(request('email'));
+
+            // attempt the new password
+            $this->doLogin();
+        } else {
+            redirect(admin_url('forgot_password'));
+        }
+
+    }
+
+
+    public function recoverPassword($token): void
+    {
+
         // Check for the token validation
         $checkToken = $this->adminsRepository->ResetAdminTokenValidation($token);
 
         // Check for the token
         $this->ResetAdminTokenCheck($checkToken);
     }
+
 
 
 
@@ -108,6 +145,8 @@ class AdminAuthController extends Controller
 
     /**
      * Check for the token
+     * @param $checkToken
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     private function ResetAdminTokenCheck($checkToken){
         if(!empty($checkToken)){
@@ -121,14 +160,16 @@ class AdminAuthController extends Controller
     /**
      * Check for  remeberme token
      */
-    private function rememberme(){
-        return request('rememberme') == 1 ? true: false;
+    private function rememberme(): bool
+    {
+        return request('rememberme') === 1 ? true: false;
     }
 
     /**
      * Login inputs
      */
-    private function loginInputs(){
+    private function loginInputs(): array
+    {
         return [
             'email'=> request('email'),
             'password'=> request('password'),
@@ -137,8 +178,11 @@ class AdminAuthController extends Controller
 
     /**
      *  Get token
+     * @param $admin
+     * @return string
      */
-    private function ResetAdminToken($admin){
+    private function ResetAdminToken($admin): string
+    {
         return app('auth.password.broker')->createToken($admin);
     }
 
@@ -147,5 +191,29 @@ class AdminAuthController extends Controller
      */
     private function ResetAdminData($admin,$token){
         return $this->adminsRepository->ResetAdminDataGet($admin,$token);
+    }
+
+    /*
+     *  Validation rules for new admin password
+     * */
+
+    private function resetNewPasswordValidation()
+    {
+        // Data
+        $data = [
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ];
+
+        // Messages
+        $messages = [
+            'password' => 'Password',
+            'password_confirmation' => 'Confirm Password',
+        ];
+        try {
+            return $this->validate(request(), $data, [], $messages);
+        } catch (ValidationException $e) {
+            return $e;
+        }
     }
 }

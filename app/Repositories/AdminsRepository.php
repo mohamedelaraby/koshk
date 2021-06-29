@@ -59,14 +59,19 @@ class AdminsRepository
 
     /**
      * Store new  Record
+     * @param $userdata
+     * @return
      */
 
-    public function create($userdata){
-        return Admin::create($userdata);
+    public function create(){
+      return;
     }
 
     /**
      * Update existing Record
+     * @param $user
+     * @param $request
+     * @return
      */
     public function update($user,$request){
         return  $this->findById($user->id)->update($this->UserData($user,$request));
@@ -76,6 +81,7 @@ class AdminsRepository
      * Delete Record By ID
      *
      * @param $id
+     * @return
      */
     public function delete($id){
         return $this->findById($id)->delete();
@@ -85,9 +91,12 @@ class AdminsRepository
     /**
      * Get admin reset password data
      *
-     * @param $id
+     * @param $admin
+     * @param $token
+     * @return bool
      */
-   public function ResetAdminDataGet($admin,$token){
+   public function ResetAdminDataGet($admin,$token): bool
+   {
     return DB::table('password_resets')->insert([
         'email' =>$admin->email,
         'token' =>$token,
@@ -98,7 +107,8 @@ class AdminsRepository
     /**
      * Check admin reset password token
      *
-     * @param $id
+     * @param $token
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|null
      */
    public function ResetAdminTokenValidation($token){
     return DB::table('password_resets')
@@ -108,7 +118,28 @@ class AdminsRepository
    }
 
 
+    /**
+     * @param $adminData
+     * @param $email
+     * @return int
+     */
+    public function AdminPasswordUpdate($adminData, $email){
+       return DB::table('password_resets')
+            ->where('email',$email)
+           ->update($adminData);
+}
 
+/**
+     *  Delete other password reset tries
+     * @param $email
+     * @return int
+     */
+    public function AdminPasswordResetDelete($email)
+    {
+       return DB::table('password_resets')
+            ->where('email',$email)
+           ->delete();
+}
 
 
 }
